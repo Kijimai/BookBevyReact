@@ -1,10 +1,9 @@
 #pragma warning disable CS8618
-
+namespace BookBevyReact.Models;
 using Microsoft.EntityFrameworkCore;
-namespace BookBevy.Models;
 
 public class ORMContext : DbContext
 {
-    public ORMContext(DbContextOptions options) : base(options){  }
+  public ORMContext(DbContextOptions options) : base(options) { }
 
 }
