@@ -6,7 +6,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ORMContext>(options =>
+builder.Services.AddDbContext<BookBevyContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
