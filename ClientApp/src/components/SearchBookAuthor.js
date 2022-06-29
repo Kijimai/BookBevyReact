@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 const SearchBookAuthor = () => {
   const [foundBooks, setFoundBooks] = useState([])
@@ -60,17 +61,19 @@ const SearchBookAuthor = () => {
             )
 
             return (
-              <div key={index} className="card">
-                {currentImage}
-                <div className="card-body">
-                  <h4 className="card-title">{book.volumeInfo.title}</h4>
-                  <p>
-                    {book.volumeInfo.description
-                      ? book.volumeInfo.description.substring(0, 100) + "..."
-                      : "No Description"}
-                  </p>
+              <Link to={`/books/${book.id}`}>
+                <div key={index} className="card">
+                  {currentImage}
+                  <div className="card-body">
+                    <h4 className="card-title">{book.volumeInfo.title}</h4>
+                    <p>
+                      {book.volumeInfo.description
+                        ? book.volumeInfo.description.substring(0, 100) + "..."
+                        : "No Description"}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             )
           })}
       </div>
