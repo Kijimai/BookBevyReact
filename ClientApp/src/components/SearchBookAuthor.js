@@ -7,9 +7,12 @@ const SearchBookAuthor = () => {
   const [bookTitle, setBookTitle] = useState("")
   const [bookAuthor, setBookAuthor] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    axios(`https://www.googleapis.com/books/v1/volumes?q=intitle:${bookTitle}`)
+    setIsLoading(true)
+    await axios(
+      `https://www.googleapis.com/books/v1/volumes?q=intitle:${bookTitle}`
+    )
       .then(({ data }) => {
         console.log(data.items)
         setFoundBooks(data.items)
@@ -48,8 +51,17 @@ const SearchBookAuthor = () => {
       >
         {!isLoading &&
           foundBooks.map((book, index) => {
+            let currentImage = book.volumeInfo.imageLinks.smallThumbnail && (
+              <img
+                className="card-img-top"
+                src={book.volumeInfo.imageLinks.smallThumbnail}
+                alt={book.title}
+              />
+            )
+
             return (
-              <div className="card">
+              <div key={index} className="card">
+                {currentImage}
                 <div className="card-body">
                   <h4 className="card-title">{book.volumeInfo.title}</h4>
                   <p>
