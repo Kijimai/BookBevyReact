@@ -2,6 +2,7 @@ import { Counter } from "./components/Counter"
 import { FetchData } from "./components/FetchData"
 import FetchDataFunc from "./components/FetchDataFunc"
 import SearchBookAuthor from "./components/SearchBookAuthor"
+import SingleBook from "./components/Books/SingleBook"
 import { Home } from "./components/Home"
 
 const AppRoutes = [
@@ -12,6 +13,10 @@ const AppRoutes = [
   {
     path: "/books/author_search",
     element: <SearchBookAuthor />,
+  },
+  {
+    path: "/books/:bookId",
+    element: <SingleBook />,
   },
   {
     path: "/counter",
